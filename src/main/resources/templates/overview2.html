@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/chatbox.css">
+</head>
+<body>
+    <p>Hello <span th:text="${userName}"/></p>
+    <div >
+        <div th:each="issue:${issues}">
+            <div class="card-body msg_card_body">
+                <div class="msg_cotainer">
+                    <span th:text="${issue.getAuthorName()}" /><br>
+                    <span th:text="${issue.getTitle()}" /><br>
+                    <span th:text="${issue.getCreated()}" /><br>
+                    <span><a th:href="@{/issues/{id}(id=${issue.getIssueId()})}">Details</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p><a href="/issues/new_issue" class="btn btn-primary">Add new issue</a></p>
+</body>
+</html>

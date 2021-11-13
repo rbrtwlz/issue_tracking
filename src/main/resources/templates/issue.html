@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <p>Title: <span th:text="${issueTitle}"/></p>
+    <table>
+        <thead>
+        <tr>
+            <th id="entryId">Id</th>
+            <th id="text">Text</th>
+            <th id="authorName">Author</th>
+            <th id="created">Created</th>
+            <th id="action">action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry:${entries}">
+            <td th:text="${entry.getEntryId()}" />
+            <td th:text="${entry.getText()}" />
+            <td th:text="${entry.getAuthorName()}" />
+            <td th:text="${entry.getCreated()}" />
+            <td><a href="#">comments</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <form action="#" th:action="@{/issues/add_entry}" method="POST" th:object="${entryForm}">
+        <label> New Entry </label>
+        </br>
+        <textarea rows="6" cols="40" th:field="*{body}"></textarea>
+        <input type="hidden" th:field="*{issueId}" />
+        </br>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+    <p><a href="/issues" class="btn btn-danger">Back</a></p>
+</body>
+</html>

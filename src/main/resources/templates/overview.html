@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <p>Hello <span th:text="${userName}"/></p>
+    <table>
+        <thead>
+        <tr>
+            <th id="issueId">Id</th>
+            <th id="author">Author</th>
+            <th id="title">Title</th>
+            <th id="created">Created</th>
+            <th id="action">action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="issue:${issues}">
+                <td th:text="${issue.getIssueId()}" />
+                <td th:text="${issue.getAuthorName()}" />
+                <td th:text="${issue.getTitle()}" />
+                <td th:text="${issue.getCreated()}" />
+
+                <td><a th:href="@{/issues/{id}(id=${issue.getIssueId()})}">comments</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/issues/new_issue" class="btn btn-primary">Add new issue</a></p>
+</body>
+</html>

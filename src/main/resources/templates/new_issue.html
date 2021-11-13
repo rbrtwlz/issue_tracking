@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new issue</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <form action="#" th:action="@{/issues/add_issue}" method="POST" th:object="${issueForm}">
+        <label> New Entry </label>
+        </br>
+        <label for="issueTitle">Issue Title</label>
+        <input type="text" id="issueTitle" class="form-control" th:field="*{issueTitle}" />
+        <br/>
+        <label for="message">Message</label>
+        <textarea rows="6" cols="40" id="message" class="form-control" th:field="*{entryBody}"></textarea>
+        </br>
+        <button type="submit" class="btn btn-primary submit">Post</button>
+    </form>
+    <p><a href="/issues" class="btn btn-primary" >Back</a></p>
+</body>
+</html>
